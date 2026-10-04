@@ -17,16 +17,18 @@
 <main>
 <section class="card">
 <h2>1. Select Algorithm</h2>
+
 <form method="post">
-<div class="algorithms">
-{% for a in algorithms %}
-<label class="algorithm {% if selected_model == a %}active{% endif %}">
-<input type="radio" name="algorithm" value="{{a}}" {% if selected_model == a %}checked{% endif %} onchange="this.form.submit()">
-<b>{{a}}</b>
-<small>{% if a=="Decision Tree" %}Interpretable tree classifier{% elif a=="Pruned Decision Tree" %}Reduced-complexity tree classifier{% else %}RBF-kernel classifier{% endif %}</small>
-</label>
-{% endfor %}
-</div>
+    <label for="algorithm">Choose Machine Learning Algorithm</label>
+
+    <select id="algorithm" name="algorithm" onchange="this.form.submit()">
+        {% for a in algorithms %}
+            <option value="{{ a }}"
+                {% if selected_model == a %}selected{% endif %}>
+                {{ a }}
+            </option>
+        {% endfor %}
+    </select>
 </form>
 </section>
 
